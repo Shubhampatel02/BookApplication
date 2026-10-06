@@ -14,9 +14,10 @@ public class BookService {
 	BookRepository bookrepository;
 	public Book addbook(Book book) {
 			Book save =	bookrepository.save(book);
-			System.out.print(save);
-			return save;
-			
+			return save;	
+	}
+	public Book getBookByname(String name) {
+		return bookrepository.findBookByTitle(name);
 	}
 	
 }

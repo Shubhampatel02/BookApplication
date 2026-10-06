@@ -2,6 +2,8 @@ package com.example.BookApplication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,12 @@ public class BookController {
 	@PostMapping("/addBook")
 	public ResponseEntity<Book> addBook(@RequestBody Book book) {
 		Book savedBook = bookservice.addbook(book);
-		System.out.print(savedBook);
 		return ResponseEntity.ok(savedBook);
+	}
+	
+	@GetMapping("/getBook/{bookName}")
+	public ResponseEntity<Book> getBookByname(@PathVariable("bookName") String name){
+		Book book=bookservice.getBookByname(name);
+		return ResponseEntity.ok(book);
 	}
 }
