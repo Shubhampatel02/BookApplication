@@ -19,5 +19,8 @@ public class BookService {
 	public Book getBookByname(String name) {
 		return bookrepository.findBookByTitle(name);
 	}
+	public void deletebook(Book book) {
+		bookrepository.delete(book);
+	}
 	
 }

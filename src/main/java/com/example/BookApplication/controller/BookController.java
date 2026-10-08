@@ -2,6 +2,7 @@ package com.example.BookApplication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,5 +33,10 @@ public class BookController {
 	public ResponseEntity<Book> getBookByname(@PathVariable("bookName") String name){
 		Book book=bookservice.getBookByname(name);
 		return ResponseEntity.ok(book);
+	}
+	@DeleteMapping("/deleteBook")
+	public ResponseEntity<String> DeleteBook(@RequestBody Book book) {
+		bookservice.deletebook(book);
+		return ResponseEntity.ok("deletion successful");
 	}
 }
